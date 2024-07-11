@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../context/UserContext';
 import NewUserForm from './NewUserForm';
-import Example from './Example';
+import Pages from './Pages';
 
 const UserTable = () => {
   const [searchQuery, setSearchQuery] = useState();
@@ -34,9 +34,6 @@ const UserTable = () => {
     console.log("result =" ,results);}
   }, [searchQuery]);
 
-  // const handleSearch = (e) => {
-  //   searchUsers(e.target.value);
-  // };
 
   return (
     <div className=''>
@@ -51,32 +48,8 @@ const UserTable = () => {
           onBlur={()=>setShowSuggestions(false)}
           onFocus={()=>setShowSuggestions(true)} 
         />
-        {/* <div>
-        {filteredUsers.map((user) => (
-          <div key={user.id}>{user.first_name}</div>
-        ))}
-      </div> */}
-
-      {/* <div key={2} className="fixed bg-white rounded-lg shadow-lg w-[14rem] ml-42 mt-52 px-1 py-1">
-      <ul className="py-1 px-1">
-        <li className="block px-1 py-1 text-gray-800 hover:bg-gray-100" key={13}>
-          🧐Yashasweeni
-        </li>
-        <li className="block px-1 py-1 text-gray-800 hover:bg-gray-100" key={13}>
-          🧐Yashasweeni
-        </li>
-        <li className="block px-1 py-1 text-gray-800 hover:bg-gray-100" key={13}>
-          🧐Yashasweeni
-        </li>
-        <li className="block px-1 py-1 text-gray-800 hover:bg-gray-100" key={13}>
-          🧐Yashasweeni
-        </li>
-        <li className="block px-1 py-1 text-gray-800 hover:bg-gray-100" key={13}>
-          🧐Yashasweeni
-        </li>
-      </ul>
-      </div> */}
-
+        
+      {/* Implements a search input with dynamic user suggestions dropdown, showing up to 5 users. */}
       {showSuggestions && filteredUsers != 0 ? <div key={2} className="fixed bg-white rounded-lg shadow-lg w-[14rem] ml-42 mt-52 px-1 py-1">
         <ul className="py-1 px-1">
             {
@@ -92,7 +65,7 @@ const UserTable = () => {
                   }
                 })}
               </ul>
-    </div> : null}
+        </div> : null}
         <button
           onClick={() => setShowForm(true)}
           className='m-5 px-4 py-2 border-white border-2 text-white rounded-md'
@@ -115,8 +88,7 @@ const UserTable = () => {
             <td className="px-4 text-gray-500 py-2 w-1/5">Age</td>
             <td className="px-4 text-gray-500 py-2 w-1/5">Gender</td>
           </tr>
-          
-        </thead>
+      </thead>
         <tbody>
           {currentData.map(user => (
             <tr key={user.id}>
@@ -130,7 +102,7 @@ const UserTable = () => {
         </tbody>
       </table>
       </div>
-      <Example
+      <Pages
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={handlePageChange}
@@ -138,7 +110,7 @@ const UserTable = () => {
       {showForm && 
       <div className="fixed inset-0 bg-black bg-opacity-40 flex justify-center items-center">
           <div className="bg-white p-5 rounded-lg shadow-lg">
-      <NewUserForm onClose={() => setShowForm(false)} /> {/* Conditionally render the form */}
+      <NewUserForm onClose={() => setShowForm(false)} />
         </div>
         </div>}
     </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Example = ({ currentPage, totalPages, onPageChange }) => {
+const Pages = ({ currentPage, totalPages, onPageChange }) => {
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
       onPageChange(page);
@@ -19,9 +19,9 @@ return (
         <div>
             {Array.from({ length: totalPages }, (_, index) => {
                 if (
-                    // index < 3 ||
+                    
                     (index >= currentPage - 2 && index <= currentPage + 2) 
-                    // || index >= totalPages - 3
+                    
                 ) {
                     return (
                         <button
@@ -35,9 +35,7 @@ return (
                         </button>
                     );
                 } 
-                // else if (index === 3) {
-                //     return <span key={index}>...</span>;
-                // }
+                
             })}
         </div>
         <button
@@ -51,4 +49,4 @@ return (
 );
 };
 
-export default Example;
+export default Pages;

@@ -9,7 +9,7 @@ export const UserProvider = ({ children }) => {
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:8080/users').then(response => {
+    axios.get('https://sheetdb.io/api/v1/r0981ki6fkj2f').then(response => {
       setUsers(response.data);
     });
   }, []);
@@ -22,8 +22,9 @@ export const UserProvider = ({ children }) => {
   };
 
   const addUser = (user) => {
-    axios.post('http://localhost:8080/users', user).then(response => {
+    axios.post('https://sheetdb.io/api/v1/r0981ki6fkj2f', user).then(response => {
       setUsers([...users, response.data]);
+      window.location.reload();
     });
   };
 
